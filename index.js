@@ -1,6 +1,8 @@
 const rock = document.querySelector("#rock");
 const paper = document.querySelector("#paper");
 const scissors = document.querySelector("#scissors");
+const container = document.querySelector("#results");
+const score = document.querySelector("#score");
 
 //create a function that will return rock paper or scissors
 function getComputerChoice(){
@@ -44,52 +46,68 @@ function playRound(pSelection){
     //console log the selections. 
     console.log(`Computer choose: ${computersSelection}`);
     console.log(`Player choose: ${playerSelection} `);
-
-    //switch statement that passes in the users choice and compares it to the computers choice. 
+    if(playerScore === 5 || computerScore === 5)
+        {
+            if(playerScore === 5){
+                container.textContent = "You are victorious! Great Job!";
+            }
+            else{
+                container.textContent = "The computer he beaten you! Better luck next time.";
+            }
+            return;
+        }
+    else
+    {
+        //switch statement that passes in the users choice and compares it to the computers choice. 
     switch(playerSelection){
-        case "rock":
-            if(computersSelection === "paper"){
-                console.log(" Paper covers rock. Computer won that round");
-                computerScore ++;
-            }
-            else if(computersSelection === "scissors"){
-                console.log("rock crushes scissors. You won that round");
-                playerScore ++;
-            }
-            else{
-                console.log("This one was a draw")
-            }
-            break;
-        case "paper":
-            if(computersSelection === "scissors"){
-                console.log("Scissors cut paper. Computer won that round");
-                computerScore ++;
-            }
-            else if(computersSelection === "rock"){
-                console.log("Paper cover rock. You won that round");
-                playerScore ++;
-            }
-            else{
-                console.log("This one was a draw")
-            }
-            break;
-        case "scissors":
-            if(computersSelection === "rock"){
-                console.log("rock crushes scissors. Computer won that round");
-                computerScore ++;
-            }
-            else if(computersSelection === "paper"){
-                console.log("scissors cut paper. You won that round");
-                playerScore ++;
-            }
-            else{
-                console.log("This one was a draw")
-            }
-            break;
-        default:
-            console.log("invalid entry. Enter Rock, Paper, or Scissors");
-            break;
+            case "rock":
+                if(computersSelection === "paper"){
+                    console.log(" Paper covers rock. Computer won that round");
+                    computerScore ++;
+                }
+                else if(computersSelection === "scissors"){
+                    console.log("rock crushes scissors. You won that round");
+                    playerScore ++;
+                }
+                else{
+                    console.log("This one was a draw")
+                }
+                break;
+            case "paper":
+                if(computersSelection === "scissors"){
+                    console.log("Scissors cut paper. Computer won that round");
+                    computerScore ++;
+                }
+                else if(computersSelection === "rock"){
+                    console.log("Paper cover rock. You won that round");
+                    playerScore ++;
+                }
+                else{
+                    console.log("This one was a draw")
+                }
+                break;
+            case "scissors":
+                if(computersSelection === "rock"){
+                    console.log("rock crushes scissors. Computer won that round");
+                    computerScore ++;
+                }
+                else if(computersSelection === "paper"){
+                    console.log("scissors cut paper. You won that round");
+                    playerScore ++;
+                }
+                else{
+                    console.log("This one was a draw")
+                }
+                break;
+            default:
+                console.log("invalid entry. Enter Rock, Paper, or Scissors");
+                break;
+        }
     }
+    
+
+    score.textContent = `Player score: ${playerScore} Computer Score: ${computerScore} `;
+    
 
 }
 
@@ -121,8 +139,6 @@ function playGame(){
 }
 
 rock?.addEventListener('click', () => {
-    //console.log("Button Works");
-    
     mySelectNum = 1;
     playRound("rock");
     //playGame();
@@ -139,15 +155,7 @@ scissors?.addEventListener('click', () => {
 });
 
 
-const container = document.querySelector("#results");
 
-const content = document.createElement("div");
-
-// secondbtn.addEventListener('click', () => {
-//     content.classList.add("content");
-//     content.textContent = "This is an insert";
-//     container.appendChild(content);
-// })
 
 
 
