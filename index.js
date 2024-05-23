@@ -1,4 +1,6 @@
-
+const rock = document.querySelector("#rock");
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
 
 //create a function that will return rock paper or scissors
 function getComputerChoice(){
@@ -8,7 +10,22 @@ function getComputerChoice(){
 }
 //function to get the player selection. Created a function to be able to use later in program
 function getPlayerSelection(){
-    let getSelection = window.prompt("Rock, Paper or Scissors").toLowerCase();
+    let getSelection = ""; //window.prompt("Rock, Paper or Scissors").toLowerCase();
+    let mySelectNum = 0;
+    
+
+    
+    
+    if(mySelectNum = 1){
+        getSelection = "rock"
+    }
+    else if(mySelectNum = 2){
+        getSelection = "paper"
+    }
+    else if(mySelectNum = 3){
+        getSelection = "scissors"
+    }
+
     return getSelection;
 }
 
@@ -19,10 +36,10 @@ let computerScore = 0;
 let myCount = 0;
 
 //this function will get the selections from both computer and player and compare them to determine a winner
-function playRound(){
+function playRound(pSelection){
     //call my functions and set some variables for the players choices
     const computersSelection = getComputerChoice();
-    const playerSelection = getPlayerSelection();
+    const playerSelection = pSelection;//getPlayerSelection();
 
     //console log the selections. 
     console.log(`Computer choose: ${computersSelection}`);
@@ -103,9 +120,39 @@ function playGame(){
     }
 }
 
+rock?.addEventListener('click', () => {
+    //console.log("Button Works");
+    
+    mySelectNum = 1;
+    playRound("rock");
+    //playGame();
+});
+paper?.addEventListener('click', () => {
+    mySelectNum = 2;
+    playRound("paper");
+    //playGame();
+});
+scissors?.addEventListener('click', () => {
+    mySelectNum = 3;
+    playRound("scissors");
+   //playGame();
+});
+
+
+const container = document.querySelector("#results");
+
+const content = document.createElement("div");
+
+// secondbtn.addEventListener('click', () => {
+//     content.classList.add("content");
+//     content.textContent = "This is an insert";
+//     container.appendChild(content);
+// })
+
+
 
 //calls the function to play the game. 
-playGame();
+//playGame();
 
 
 
